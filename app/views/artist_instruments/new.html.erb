@@ -1,0 +1,14 @@
+<% if flash[:errors] %>
+<h1>Uh oh! You have errors. See below: </h1>
+<ul>
+    <% flash[:errors].each do |error|  %>
+        <li><%= error %></li>
+    <% end %>
+</ul>
+<% end %>
+
+<%= form_for @artist_instrument do |f|%>
+    Artist: <%= f.collection_select(:artist_id, Artist.all, :id, :name, prompt: true) %><br />
+    Instrument: <%= f.collection_select(:instrument_id, Instrument.all, :id, :name, prompt: true)%>
+    <%= f.submit %>
+<% end %>
